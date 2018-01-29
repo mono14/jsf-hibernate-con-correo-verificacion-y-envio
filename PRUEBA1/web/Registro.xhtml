@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"     
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet library="css" name="style.css" />
+    </h:head>
+    <h:body class="body">
+        <h:form id="Registro" class="derecha">
+            <p:growl id="msgs" showDetail="true" />
+            <p:dataTable id="tablaRegistro" value="#{beanLogin.log}" tableStyle="width:auto ">
+                <p:column headerText="Registro">
+                    <h3 style="margin-top:0">Usuario</h3>
+                    <p:inputText id="Usuario" value="#{beanLogin.usuario}"  required="true"/>
+                    <p:message for="Usuario" />
+                    <p:separator />
+                    <h3 style="margin-top:0">Contraseña</h3>
+                    <p:password id="feedback" value="#{beanLogin.pass}" feedback="true" required="true" />
+                    <p:message for="feedback" />
+                    <p:separator/>
+
+                    <h3 style="margin-top:0">Nombre</h3> 
+                    <p:inputText id="nom" value="#{beanLogin.nom}" required="true"/>
+                    <p:message for="nom" />
+                    <p:separator/>
+                    <h3 style="margin-top:0">Telefono</h3>
+                    <p:inputText id="tel" value="#{beanLogin.tel}" required="true"/>
+                    <p:message for="tel" />
+                    <p:separator/>
+                    <h3 style="margin-top:0">Edad</h3>
+
+                    <p:outputLabel for="spinner" />
+                    <p:spinner id="spinner"  max="100" min="1" value="#{beanLogin.e}" required="true"/>
+                    <p:message for="spinner"/>
+                    <p:separator/>
+                    <p:inputText id="email" required="true" label="email" size="40"
+                                 requiredMessage="Please enter your email address."
+                                 validatorMessage="Invalid email format"
+                                 value="#{beanLogin.correo}">
+
+                        <f:validateRegex
+                            pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+
+                    </p:inputText>
+                    <p:watermark for="email" value="Email Address *" />
+                    <p:message for="email" />
+                    <p:commandButton actionListener="#{beanLogin.insertarRegistro()}" value="Registrar" 
+                                     update="tablaRegistro" ajax="false" styleClass="ui-priority-primary"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>

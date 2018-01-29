@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet library="css" name="style.css" />
+    </h:head>
+    <h:body class="body">
+        <h:form id="tablaLogin" class="derecha">
+            <p:growl id="growl" life="2000" />
+            <p:dataTable id="prueba" value="#{beanLogin.log}" tableStyle="width:auto">
+                <p:column headerText="usuario">
+                    <h:outputText value="Usuario : " style="alignment-adjust:central "/>
+                    <p:inputText id="usu" value="#{beanLogin.usuario}"  style="margin-left: 11%"/>
+                    <p:separator/>
+                    <h:outputText value="Constraseña : "/>
+                    <p:password id="nonFeedback" value="#{beanLogin.pass}" />
+                    <p:separator/>
+                    <p:commandButton actionListener="#{beanLogin.convertir()}" value="iniciar sesion" 
+                                     styleClass="ui-priority-primary" update=":tablaLogin:growl" />
+                     <p:separator/>
+                    <p:commandLink id="nonAjax" actionListener="#{beanLogin.buttonAction}" ajax="false">
+                        <h:outputText value="Registro" />
+                    </p:commandLink>    
+                      <p:separator/>
+                    <p:commandLink id="noAjax" actionListener="#{beanLogin.Correo}" style="right:10px" ajax="false">
+                        <h:outputText value="recuperar contraseña" />
+                    </p:commandLink>   
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>
+<!-- <p:stack icon="/resources/demo/images/dock/stack.png" expanded="true">
+                    <p:menuitem value="Home" icon="/resources/demo/images/dock/home.png" url="index.xhtml"/>
+                    <p:menuitem value="Music" icon="/resources/demo/images/dock/music.png" url="#"/>
+                    <p:menuitem value="Video" icon="/resources/demo/images/dock/video.png" url="#"/>
+                    <p:menuitem value="Email" icon="/resources/demo/images/dock/email.png" url="#"/>
+                    <p:menuitem value="Portfolio" icon="/resources/demo/images/dock/portfolio.png" url="#"/>
+                </p:stack>-->

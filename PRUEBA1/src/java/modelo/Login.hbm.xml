@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/01/2018 01:17:41 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Login" table="login" catalog="personas" optimistic-lock="version">
+        <id name="idLogin" type="java.lang.Integer">
+            <column name="idLogin" />
+            <generator class="identity" />
+        </id>
+        <property name="usuario" type="string">
+            <column name="Usuario" length="200" not-null="true" />
+        </property>
+        <property name="pass" type="string">
+            <column name="Pass" length="200" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="100" not-null="true" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="Telefono" length="100" not-null="true" />
+        </property>
+        <property name="edad" type="string">
+            <column name="edad" length="100" not-null="true" />
+        </property>
+        <property name="correo" type="string">
+            <column name="correo" length="300" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
